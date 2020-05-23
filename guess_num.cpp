@@ -1,23 +1,43 @@
 #include <iostream>
 #include <cstdlib>
-#include <ctime>
+#include <ctime>//to import time from system
 using namespace std;
+void printarray(int guesses[],int guess_count)
+{
+    for(int i=0;i<guess_count;i++)
+    {
+        cout<<guesses[i]<<"\t";
+    }
+    cout<<endl;
+    cout<<"Number of guesses : "<<guess_count<<endl;
+}
 void play_game()
 {
-    cout << "~~~~Welcome, this is a simple game to Guess a Random Number~~~~"<<endl<<endl;
+    cout << "~~~~Welcome, this is a simple game to Guess a Random Number between 1-50~~~~"<<endl<<endl;
+    int random_num=rand() % 51;     // % 51 is to limit the range upto 50 because if 51 it will terminate because it will a perfect division like 11/11 remainder is zero
+    int guesses[51];
+    int guess_count = 0;
+    while(true)
+    {
     int usr_num;
     cout << "Emter a random number : "<< endl;
     cin >> usr_num;
-    int random_num = rand() % 51; // % 10 is to limit the range upto 10 because if 11 it will terminate because it will a perfect division like 11/11 remainder is zero
-    cout << "THE RANDOM NUM IS :-- "<<random_num << endl;
+    guesses[guess_count++] = usr_num;//storing the user inputs in to the array, guess_count++ is to increment the array positions
+    // guess_count++ or we can increment guess_count in the previous line
     if(random_num == usr_num)
     {
-        cout << "CONGRATULATION!! YOU WIN!!"<< endl <<endl << "Gnerated number : " << random_num << endl << "Your entered number :" << usr_num<<endl<<endl;
-    }else{
-        cout << "SORRY :( YOU LOOSE TRY AGAIN "<< endl <<endl << "Gnerated number :" << random_num <<endl << "Your number :" << usr_num<<endl<<endl;
+        cout << "CONGRATULATION!! YOU WIN!!"<< endl<<" Gnerated number : "<< random_num << " Entered number : "<< usr_num <<endl<<endl;
+        break;
+    }else if(usr_num < random_num)
+    {
+        cout<<"Too low"<<endl;
+    }else if(usr_num > random_num)
+    {
+        cout<<"Too high"<<endl;
     }
-
-}
+    }
+    printarray(guesses,guess_count);
+    }
 int main()
 {
     srand(time(NULL)); // to avoid rand() to give same output everytime to fix that we are seeding a random input form system time
