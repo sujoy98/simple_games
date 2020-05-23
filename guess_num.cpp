@@ -14,7 +14,7 @@ void printarray(int guesses[],int guess_count)
 void play_game()
 {
     cout << "~~~~Welcome, this is a simple game to Guess a Random Number between 1-50~~~~"<<endl<<endl;
-    int random_num=rand() % 51;     // % 51 is to limit the range upto 50 because if 51 it will terminate because it will a perfect division like 11/11 remainder is zero
+    int random_num=rand() % 51;     // % 51 is to limit the range upto 50 because if 51 it will terminate because it will be a perfect division like 11/11 remainder is zero
     int guesses[51];
     int guess_count = 0;
     while(true)
